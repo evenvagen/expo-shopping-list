@@ -1,13 +1,13 @@
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity } from "react-native";
 
-export function HomeScreen() {
+export function HomeScreen({ navigation }) {
   return (
     <SafeAreaView>
     <View> 
         <View style={styles.container}>
             <Text style={styles.headline}>Handleliste</Text>
             <View style={styles.row}>
-                <TouchableOpacity style={styles.box}>
+                <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('ShowShoppingList')}>
                     <Text style={styles.boxText}>Vis</Text>
                 </TouchableOpacity>
 
