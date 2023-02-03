@@ -11,6 +11,7 @@ export function HomeScreen({ navigation }) {
 
   const addShoppingListItem = () => {
     dispatch(add(itemValue));
+    setItemValue('');
     alert('Produkt lagt til');
     setModalVisible(false);
   }

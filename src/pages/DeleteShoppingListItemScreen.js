@@ -16,8 +16,8 @@ export function DeleteShoppingListItemScreen({ navigation }){
                    return (
                     <View style={styles.item}>
                         <Text style={styles.text}>{item.id}. {item.name}</Text>
-                        <TouchableOpacity style={{width: '40%', backgroundColor: 'red'}} onPress={() => dispatch(remove(item.id))}>
-                            <Text>Slett</Text>
+                        <TouchableOpacity style={{width: '20%',height: '100%', backgroundColor: 'red', justifyContent: 'center', alignItems: 'center'}} onPress={() => dispatch(remove(item.id))}>
+                            <Text style={{fontSize: 40}}>×</Text>
                         </TouchableOpacity>
                     </View>
                    ) 
@@ -29,16 +29,17 @@ export function DeleteShoppingListItemScreen({ navigation }){
 
 const styles = StyleSheet.create({
     item:{
-        padding: 20,
+        height: 70,
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#EDCB62',
         marginBottom: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     text: {
-        color: 'white',
         fontSize: 20,
         fontWeight: 'bold',
-        color: 'black',
-        width: '40%'
+        width: '80%',
+        paddingLeft: 20
     }
 })

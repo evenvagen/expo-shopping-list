@@ -24,14 +24,16 @@ export function ShowShoppingListScreen({ navigation }){
 
 const styles = StyleSheet.create({
     item:{
-        padding: 20,
+        height: 70,
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#EDCB62',
-        marginBottom: 1
+        marginBottom: 1,
     },
     text: {
-        color: 'white',
         fontSize: 20,
         fontWeight: 'bold',
-        color: 'black'
+        width: '100%',
+        paddingLeft: 20
     }
 })
