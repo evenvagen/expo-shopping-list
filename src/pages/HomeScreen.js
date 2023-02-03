@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Modal, TextInput } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Modal, TextInput, TouchableWithoutFeedback, Keyboard } from "react-native";
 
 export function HomeScreen({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -20,25 +20,28 @@ export function HomeScreen({ navigation }) {
             </TouchableOpacity>
 
             <Modal visible={modalVisible} animationType="slide" transparent={true}>
-              <View style={{justifyContent: "center", alignItems: "center", height: "100%"}} onPress={() => setModalVisible(false)}>
-                <View style={styles.modalContainer}>
+              <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+                <View style={{justifyContent: "center", alignItems: "center", height: "100%"}} onPress={() => setModalVisible(false)}>
+                  <View style={styles.modalContainer}>
 
-                  <View style={{width: '100%', height: '15%', alignItems: 'flex-end'}}>
-                    <TouchableOpacity onPress={() => setModalVisible(false)} style={{backgroundColor: '#fff', width: '15%', margin: 10, borderWidth: 1, borderRadius: 5, justifyContent: 'center', alignItems: 'center', height: '100%'}}>
-                      <Text style={{fontSize: 20}}>×</Text>
-                    </TouchableOpacity>
+                    <View style={{width: '100%', height: '15%', alignItems: 'flex-end'}}>
+                      <TouchableOpacity onPress={() => setModalVisible(false)} style={{backgroundColor: '#fff', width: '15%', margin: 10, borderWidth: 1, borderRadius: 5, justifyContent: 'center', alignItems: 'center', height: '100%'}}>
+                        <Text style={{fontSize: 20}}>×</Text>
+                      </TouchableOpacity>
+                    </View>
+                  
+
+                    <View style={{justifyContent: "center", alignItems: "center", height: "100%"}}>
+                      <TextInput placeholder="Skriv inn vare.." placeholderTextColor='#808080' value={itemValue} style={styles.input} onChangeText={text => setItemValue(text)} />
+                      <TouchableOpacity style={styles.submitButton} onPress={() => console.log(itemValue)}>
+                        <Text>Legg til</Text>
+                      </TouchableOpacity>
+                    </View>
+
                   </View>
-                 
-
-                  <View style={{justifyContent: "center", alignItems: "center", height: "100%"}}>
-                    <TextInput placeholder="Skriv inn vare.." placeholderTextColor='#808080' value={itemValue} style={styles.input} />
-                    <TouchableOpacity style={styles.submitButton}>
-                      <Text>Legg til</Text>
-                    </TouchableOpacity>
-                  </View>
-
                 </View>
-              </View>
+              </TouchableWithoutFeedback>
+              
             </Modal>
 
           </View>
