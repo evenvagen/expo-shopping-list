@@ -20,6 +20,13 @@ export function HomeScreen({ navigation }) {
     <SafeAreaView style={{backgroundColor: '#C6C3B5'}}>
       <View>
         <View style={styles.container}>
+
+          <View>
+            <TouchableOpacity style={{backgroundColor: '#CDAD00', width: 320, marginBottom: 10, height: 70, justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderRadius: 5}}>
+              <Text style={{fontSize: 20, fontWeight: 'bold', color: '#fff'}}>Massepopuler</Text>
+            </TouchableOpacity>
+          </View>
+
           <View style={styles.row}>
             <TouchableOpacity style={styles.box('#6E8B3D')} onPress={() => navigation.navigate("ShowShoppingList")}>
               <Text style={styles.boxText}>Vis</Text>
@@ -63,6 +70,12 @@ export function HomeScreen({ navigation }) {
 
             <TouchableOpacity style={styles.box('#CC3232')} onPress={() => navigation.navigate('DeleteShoppingListItem')}>
               <Text style={styles.boxText}>Slette</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View>
+            <TouchableOpacity style={{backgroundColor: '#B3432B', width: 320, marginTop: 10, height: 70, justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderRadius: 5}}>
+              <Text style={{fontSize: 20, fontWeight: 'bold', color: '#fff'}}>Nullstill</Text>
             </TouchableOpacity>
           </View>
         </View>
