@@ -1,5 +1,5 @@
 const initialState = {
-    shoppingList: [{id: 1, name: 'bread'}, {id: 2, name: 'juice'}]
+    shoppingList: [{id: 1, name: 'Brød'}, {id: 2, name: 'Melk'}]
 };
 
 export default (state = initialState, action) => {
@@ -14,6 +14,15 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 shoppingList: state.shoppingList.filter((item) => item.id !== action.id)
+            }
+        case 'EDIT_ITEM':
+            const index = state.shoppingList.findIndex((item) => item.id === action.payload.id);
+            const newArray = [...state.shoppingList];
+            newArray[index].name = action.payload.name;
+
+            return {
+                ...state,
+                shoppingList: newArray
             }
         default:
             return state;

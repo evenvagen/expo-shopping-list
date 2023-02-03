@@ -57,7 +57,7 @@ export function HomeScreen({ navigation }) {
           </View>
 
           <View style={styles.row}>
-            <TouchableOpacity style={styles.box('#FF7D40')}>
+            <TouchableOpacity style={styles.box('#FF7D40')} onPress={() => navigation.navigate('EditShoppingListItem')}>
               <Text style={styles.boxText}>Endre</Text>
             </TouchableOpacity>
 

@@ -11,3 +11,10 @@ export const remove = (id) => {
         id: id
     }
 }
+
+export const edit = (item) => {
+    return {
+        type: 'EDIT_ITEM',
+        payload: item
+    }
+}
