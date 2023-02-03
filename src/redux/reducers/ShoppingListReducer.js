@@ -3,6 +3,15 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-    return state;
+    switch(action.type){
+        case 'ADD_ITEM':
+            const lastItem = state.shoppingList.slice(-1)[0];
+            return{
+                ...state,
+                shoppingList: [...state.shoppingList, {id: lastItem.id + 1, name: action.payload}]
+            }
+        default:
+            return state;
+    }
 };
 

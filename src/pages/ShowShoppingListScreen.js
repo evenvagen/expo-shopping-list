@@ -15,7 +15,7 @@ export function ShowShoppingListScreen({ navigation }){
                 renderItem={( {item} ) => {
                    return (
                     <View style={styles.item}>
-                        <Text style={styles.text}>{item.name}</Text>
+                        <Text style={styles.text}>{item.id}. {item.name}</Text>
                     </View>
                    ) 
                 }}

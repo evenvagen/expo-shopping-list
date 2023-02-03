@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Modal, TextInput, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { useDispatch } from 'react-redux';
+import { add } from "../redux/actions/ShoppingListAction";
 
 export function HomeScreen({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [itemValue, setItemValue] = useState('');
+
+  const dispatch = useDispatch();
 
   return (
     <SafeAreaView>
@@ -33,7 +37,7 @@ export function HomeScreen({ navigation }) {
 
                     <View style={{justifyContent: "center", alignItems: "center", height: "100%"}}>
                       <TextInput placeholder="Skriv inn vare.." placeholderTextColor='#808080' value={itemValue} style={styles.input} onChangeText={text => setItemValue(text)} />
-                      <TouchableOpacity style={styles.submitButton} onPress={() => console.log(itemValue)}>
+                      <TouchableOpacity style={styles.submitButton} onPress={() => dispatch(add(itemValue))}>
                         <Text>Legg til</Text>
                       </TouchableOpacity>
                     </View>
