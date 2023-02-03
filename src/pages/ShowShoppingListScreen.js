@@ -26,13 +26,14 @@ export function ShowShoppingListScreen({ navigation }){
 
 const styles = StyleSheet.create({
     item:{
-        padding: 10,
-        backgroundColor: 'gray',
+        padding: 20,
+        backgroundColor: '#EDCB62',
         marginBottom: 1
     },
     text: {
         color: 'white',
-        fontSize: 16,
-        fontWeight: 'bold'
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'black'
     }
 })

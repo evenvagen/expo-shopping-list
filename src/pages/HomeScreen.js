@@ -28,8 +28,8 @@ export function HomeScreen({ navigation }) {
                   <View style={styles.modalContainer}>
 
                     <View style={{width: '100%', height: '15%', alignItems: 'flex-end'}}>
-                      <TouchableOpacity onPress={() => {setModalVisible(false); setItemValue('')}} style={{backgroundColor: '#C6C3B5', width: '15%', margin: 10, borderWidth: 1, borderRadius: 5, justifyContent: 'center', alignItems: 'center', height: '100%'}}>
-                        <Text style={{fontSize: 20, fontWeight: 'bold'}}>×</Text>
+                      <TouchableOpacity onPress={() => {setModalVisible(false); setItemValue('')}} style={{backgroundColor: '#CC3232', width: '17%', margin: 10, borderWidth: 1, borderRadius: 5, justifyContent: 'center', alignItems: 'center', height: '100%'}}>
+                        <Text style={{fontSize: 25, fontWeight: 'bold', color: '#fff'}}>×</Text>
                       </TouchableOpacity>
                     </View>
                   
@@ -37,7 +37,7 @@ export function HomeScreen({ navigation }) {
                     <View style={{justifyContent: "center", alignItems: "center", height: "100%"}}>
                       <TextInput placeholder="Skriv inn vare.." placeholderTextColor='#808080' value={itemValue} style={styles.input} onChangeText={text => setItemValue(text)} />
                       <TouchableOpacity style={styles.submitButton} onPress={() => dispatch(add(itemValue))}>
-                        <Text style={{fontWeight: 'bold'}}>Legg til</Text>
+                        <Text style={{fontWeight: 'bold', fontSize: 20, color: 'white'}}>Legg til</Text>
                       </TouchableOpacity>
                     </View>
 
@@ -90,17 +90,17 @@ const styles = StyleSheet.create({
     marginBottom: "20%",
   },
   boxText: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: "bold",
     color: "white",
   },
   input: {
     height: '20%',
     width: '80%',
-    backgroundColor: '#C6C3B5',
+    backgroundColor: '#fff',
     color: 'black',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 20,
     paddingLeft: 15,
     borderWidth: 1,
     borderColor: '#000',
@@ -109,8 +109,8 @@ const styles = StyleSheet.create({
   submitButton: {
     height: '20%', 
     width: '80%', 
-    marginTop: 5, 
-    backgroundColor: '#C6C3B5',
+    marginTop: 7, 
+    backgroundColor: '#8BA446',
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
@@ -120,9 +120,9 @@ const styles = StyleSheet.create({
   modalContainer: {
     height: "30%",
     width: "80%",
-    backgroundColor: "#FFCC11",
+    backgroundColor: "#EDCB62",
     borderWidth: 1,
     borderColor: '#000',
-    borderRadius: 5
+    borderRadius: 5,
   }
 });
