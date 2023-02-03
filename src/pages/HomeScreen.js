@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Modal, TouchableWithoutFeedback } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Modal, TextInput } from "react-native";
 
 export function HomeScreen({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [itemValue, setItemValue] = useState('');
 
   return (
     <SafeAreaView>
@@ -20,14 +21,23 @@ export function HomeScreen({ navigation }) {
 
             <Modal visible={modalVisible} animationType="slide" transparent={true}>
               <View style={{justifyContent: "center", alignItems: "center", height: "100%"}} onPress={() => setModalVisible(false)}>
-                <TouchableWithoutFeedback style={{height: "30%", width: "80%", backgroundColor: "yellow"}}>
-                  <TouchableOpacity onPress={() => setModalVisible(false)}>
-                    <Text style={{fontSize: 18, textAlign: "right", margin: 10}}>X</Text>
-                  </TouchableOpacity>
-                  <View style={{justifyContent: "center", alignItems: "center", height: "100%"}}>
-                    <Text>Hello world</Text>
+                <View style={styles.modalContainer}>
+
+                  <View style={{width: '100%', height: '15%', alignItems: 'flex-end'}}>
+                    <TouchableOpacity onPress={() => setModalVisible(false)} style={{backgroundColor: '#fff', width: '15%', margin: 10, borderWidth: 1, borderRadius: 5, justifyContent: 'center', alignItems: 'center', height: '100%'}}>
+                      <Text style={{fontSize: 20}}>×</Text>
+                    </TouchableOpacity>
                   </View>
-                </TouchableWithoutFeedback>
+                 
+
+                  <View style={{justifyContent: "center", alignItems: "center", height: "100%"}}>
+                    <TextInput placeholder="Skriv inn vare.." placeholderTextColor='#808080' value={itemValue} style={styles.input} />
+                    <TouchableOpacity style={styles.submitButton}>
+                      <Text>Legg til</Text>
+                    </TouchableOpacity>
+                  </View>
+
+                </View>
               </View>
             </Modal>
 
@@ -77,4 +87,34 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
   },
+  input: {
+    height: '20%',
+    width: '80%',
+    backgroundColor: '#fff',
+    color: 'black',
+    fontSize: 16,
+    paddingLeft: 15,
+    borderWidth: 1,
+    borderColor: '#000',
+    borderRadius: 5
+  },
+  submitButton: {
+    height: '20%', 
+    width: '80%', 
+    marginTop: 5, 
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#000',
+    borderRadius: 5
+  },
+  modalContainer: {
+    height: "30%",
+    width: "80%",
+    backgroundColor: "#FFD300",
+    borderWidth: 1,
+    borderColor: '#000',
+    borderRadius: 5
+  }
 });
