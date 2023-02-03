@@ -10,16 +10,15 @@ export function HomeScreen({ navigation }) {
   const dispatch = useDispatch();
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor: '#C6C3B5'}}>
       <View>
         <View style={styles.container}>
-          <Text style={styles.headline}>Handleliste</Text>
           <View style={styles.row}>
-            <TouchableOpacity style={styles.box} onPress={() => navigation.navigate("ShowShoppingList")}>
+            <TouchableOpacity style={styles.box('#6E8B3D')} onPress={() => navigation.navigate("ShowShoppingList")}>
               <Text style={styles.boxText}>Vis</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.box} onPress={() => setModalVisible(true)}>
+            <TouchableOpacity style={styles.box('#8BA446')} onPress={() => setModalVisible(true)}>
               <Text style={styles.boxText}>Legg til</Text>
             </TouchableOpacity>
 
@@ -29,8 +28,8 @@ export function HomeScreen({ navigation }) {
                   <View style={styles.modalContainer}>
 
                     <View style={{width: '100%', height: '15%', alignItems: 'flex-end'}}>
-                      <TouchableOpacity onPress={() => setModalVisible(false)} style={{backgroundColor: '#fff', width: '15%', margin: 10, borderWidth: 1, borderRadius: 5, justifyContent: 'center', alignItems: 'center', height: '100%'}}>
-                        <Text style={{fontSize: 20}}>×</Text>
+                      <TouchableOpacity onPress={() => {setModalVisible(false); setItemValue('')}} style={{backgroundColor: '#C6C3B5', width: '15%', margin: 10, borderWidth: 1, borderRadius: 5, justifyContent: 'center', alignItems: 'center', height: '100%'}}>
+                        <Text style={{fontSize: 20, fontWeight: 'bold'}}>×</Text>
                       </TouchableOpacity>
                     </View>
                   
@@ -38,7 +37,7 @@ export function HomeScreen({ navigation }) {
                     <View style={{justifyContent: "center", alignItems: "center", height: "100%"}}>
                       <TextInput placeholder="Skriv inn vare.." placeholderTextColor='#808080' value={itemValue} style={styles.input} onChangeText={text => setItemValue(text)} />
                       <TouchableOpacity style={styles.submitButton} onPress={() => dispatch(add(itemValue))}>
-                        <Text>Legg til</Text>
+                        <Text style={{fontWeight: 'bold'}}>Legg til</Text>
                       </TouchableOpacity>
                     </View>
 
@@ -51,11 +50,11 @@ export function HomeScreen({ navigation }) {
           </View>
 
           <View style={styles.row}>
-            <TouchableOpacity style={styles.box}>
+            <TouchableOpacity style={styles.box('#FF7D40')}>
               <Text style={styles.boxText}>Endre</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.box}>
+            <TouchableOpacity style={styles.box('#CC3232')}>
               <Text style={styles.boxText}>Slette</Text>
             </TouchableOpacity>
           </View>
@@ -74,15 +73,16 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
   },
-  box: {
+  box: bgColor => ({
     height: 150,
     width: 150,
-    backgroundColor: "gray",
     margin: 10,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 5,
-  },
+    backgroundColor: bgColor,
+    borderWidth: 1
+  }),
   headline: {
     fontSize: 25,
     textAlign: "center",
@@ -97,8 +97,9 @@ const styles = StyleSheet.create({
   input: {
     height: '20%',
     width: '80%',
-    backgroundColor: '#fff',
+    backgroundColor: '#C6C3B5',
     color: 'black',
+    fontWeight: 'bold',
     fontSize: 16,
     paddingLeft: 15,
     borderWidth: 1,
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     height: '20%', 
     width: '80%', 
     marginTop: 5, 
-    backgroundColor: '#fff',
+    backgroundColor: '#C6C3B5',
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     height: "30%",
     width: "80%",
-    backgroundColor: "#FFD300",
+    backgroundColor: "#FFCC11",
     borderWidth: 1,
     borderColor: '#000',
     borderRadius: 5
