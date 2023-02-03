@@ -4,3 +4,10 @@ export const add = (item) => {
         payload: item
     }
 }
+
+export const remove = (id) => {
+    return {
+        type: 'REMOVE_ITEM',
+        id: id
+    }
+}

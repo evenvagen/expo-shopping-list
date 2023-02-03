@@ -5,8 +5,6 @@ export function ShowShoppingListScreen({ navigation }){
 
     const shoppingList = useSelector((state) => state.shoppingList.shoppingList)
 
-    console.log(shoppingList);
-
     return (
         <View>
             <FlatList 

@@ -10,6 +10,11 @@ export default (state = initialState, action) => {
                 ...state,
                 shoppingList: [...state.shoppingList, {id: lastItem.id + 1, name: action.payload}]
             }
+        case 'REMOVE_ITEM':
+            return {
+                ...state,
+                shoppingList: state.shoppingList.filter((item) => item.id !== action.id)
+            }
         default:
             return state;
     }

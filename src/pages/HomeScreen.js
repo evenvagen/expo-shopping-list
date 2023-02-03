@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Modal, TextInput, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Modal, TextInput, TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
 import { useDispatch } from 'react-redux';
 import { add } from "../redux/actions/ShoppingListAction";
 
@@ -8,6 +8,12 @@ export function HomeScreen({ navigation }) {
   const [itemValue, setItemValue] = useState('');
 
   const dispatch = useDispatch();
+
+  const addShoppingListItem = () => {
+    dispatch(add(itemValue));
+    alert('Produkt lagt til');
+    setModalVisible(false);
+  }
 
   return (
     <SafeAreaView style={{backgroundColor: '#C6C3B5'}}>
@@ -36,7 +42,7 @@ export function HomeScreen({ navigation }) {
 
                     <View style={{justifyContent: "center", alignItems: "center", height: "100%"}}>
                       <TextInput placeholder="Skriv inn vare.." placeholderTextColor='#808080' value={itemValue} style={styles.input} onChangeText={text => setItemValue(text)} />
-                      <TouchableOpacity style={styles.submitButton} onPress={() => dispatch(add(itemValue))}>
+                      <TouchableOpacity style={styles.submitButton} onPress={addShoppingListItem}>
                         <Text style={{fontWeight: 'bold', fontSize: 20, color: 'white'}}>Legg til</Text>
                       </TouchableOpacity>
                     </View>
@@ -54,7 +60,7 @@ export function HomeScreen({ navigation }) {
               <Text style={styles.boxText}>Endre</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.box('#CC3232')}>
+            <TouchableOpacity style={styles.box('#CC3232')} onPress={() => navigation.navigate('DeleteShoppingListItem')}>
               <Text style={styles.boxText}>Slette</Text>
             </TouchableOpacity>
           </View>
