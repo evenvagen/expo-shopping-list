@@ -1,4 +1,4 @@
-import { View, FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, FlatList, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { edit } from '../redux/actions/ShoppingListAction';
 
@@ -15,10 +15,11 @@ export function EditShoppingListItemScreen({ navigation }){
                 renderItem={( {item} ) => {
                    return (
                     <View style={styles.item}>
-                        <Text style={styles.text}>{item.id}. {item.name}</Text>
-                        <TouchableOpacity style={{width: '20%',height: '100%', backgroundColor: 'green', justifyContent: 'center', alignItems: 'center'}} onPress={() => dispatch(edit({id: item.id, name: 'Banan'}))}>
+                        <Text style={{fontSize: 18, marginRight: 10}}>{item.id}</Text>
+                        <TextInput style={styles.input} value={item.name} onChangeText={text => dispatch(edit({id: item.id, name: text}))} />
+                        {/* <TouchableOpacity style={{width: '20%',height: '100%', backgroundColor: 'green', justifyContent: 'center', alignItems: 'center'}}>
                             <Text style={{fontSize: 40}}>✔</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
                    ) 
                 }}
@@ -32,14 +33,16 @@ const styles = StyleSheet.create({
         height: 70,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#EDCB62',
+        backgroundColor: '#fff',
         marginBottom: 1,
         flexDirection: 'row',
     },
-    text: {
+    input: {
         fontSize: 20,
         fontWeight: 'bold',
-        width: '80%',
-        paddingLeft: 20
+        width: '90%',
+        paddingLeft: 20,
+        backgroundColor: '#fff',
+        height: '100%'
     }
 })
