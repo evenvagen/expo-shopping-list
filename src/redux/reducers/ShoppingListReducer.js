@@ -5,10 +5,10 @@ const initialState = {
 export default (state = initialState, action) => {
     switch(action.type){
         case 'ADD_ITEM':
-            const lastItem = state.shoppingList.slice(-1)[0];
+            const id = state.shoppingList > 0 ? state.shoppingList.slice(-1)[0].id : 0;
             return{
                 ...state,
-                shoppingList: [...state.shoppingList, {id: lastItem.id + 1, name: action.payload}]
+                shoppingList: [...state.shoppingList, {id: id + 1, name: action.payload}]
             }
         case 'REMOVE_ITEM':
             return {
