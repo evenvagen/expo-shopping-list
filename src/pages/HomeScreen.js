@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Modal, TextInput, TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
 import { useDispatch } from 'react-redux';
@@ -16,14 +17,24 @@ export function HomeScreen({ navigation }) {
     setModalVisible(false);
   }
 
+  const massPopulate = () => {
+    axios.get('https://fruityvice.com/api/fruit/all').then((res) => {
+      res.data.forEach(fruit => {
+        dispatch(add(fruit.name));
+      });
+    }).then(() => {
+      alert('Produkter lagt til vha API');
+    });
+  }
+
   return (
     <SafeAreaView style={{backgroundColor: '#C6C3B5'}}>
       <View>
         <View style={styles.container}>
 
           <View>
-            <TouchableOpacity style={{backgroundColor: '#CDAD00', width: 320, marginBottom: 10, height: 70, justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderRadius: 5}}>
-              <Text style={{fontSize: 20, fontWeight: 'bold', color: '#fff'}}>Massepopuler</Text>
+            <TouchableOpacity onPress={() => massPopulate()} style={{backgroundColor: '#CDAD00', width: 320, marginBottom: 10, height: 70, justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderRadius: 5}}>
+              <Text style={{fontSize: 20, fontWeight: 'bold', color: '#fff'}}>Massepopuler (API)</Text>
             </TouchableOpacity>
           </View>
 
