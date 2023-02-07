@@ -27,6 +27,11 @@ export function HomeScreen({ navigation }) {
     });
   }
 
+  const removeAllItems = () => {
+    dispatch(removeAll());
+    alert('Handleliste nullstilt');
+  }
+
   return (
     <SafeAreaView style={{backgroundColor: '#C6C3B5'}}>
       <View>
@@ -85,7 +90,7 @@ export function HomeScreen({ navigation }) {
           </View>
 
           <View>
-            <TouchableOpacity style={{backgroundColor: '#B3432B', width: 320, marginTop: 10, height: 70, justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderRadius: 5}} onPress={() => dispatch(removeAll())}>
+            <TouchableOpacity style={{backgroundColor: '#B3432B', width: 320, marginTop: 10, height: 70, justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderRadius: 5}} onPress={removeAllItems}>
               <Text style={{fontSize: 20, fontWeight: 'bold', color: '#fff'}}>Nullstill</Text>
             </TouchableOpacity>
           </View>
