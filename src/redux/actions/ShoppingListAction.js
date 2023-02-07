@@ -18,3 +18,9 @@ export const edit = (item) => {
         payload: item
     }
 }
+
+export const removeAll = () => {
+    return {
+        type: 'REMOVE_ALL_ITEMS'
+    }
+}

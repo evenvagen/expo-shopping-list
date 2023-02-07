@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Modal, TextInput, TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
 import { useDispatch } from 'react-redux';
-import { add } from "../redux/actions/ShoppingListAction";
+import { add, removeAll } from "../redux/actions/ShoppingListAction";
 
 export function HomeScreen({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -85,7 +85,7 @@ export function HomeScreen({ navigation }) {
           </View>
 
           <View>
-            <TouchableOpacity style={{backgroundColor: '#B3432B', width: 320, marginTop: 10, height: 70, justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderRadius: 5}}>
+            <TouchableOpacity style={{backgroundColor: '#B3432B', width: 320, marginTop: 10, height: 70, justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderRadius: 5}} onPress={() => dispatch(removeAll())}>
               <Text style={{fontSize: 20, fontWeight: 'bold', color: '#fff'}}>Nullstill</Text>
             </TouchableOpacity>
           </View>

@@ -5,7 +5,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch(action.type){
         case 'ADD_ITEM':
-            const id = state.shoppingList > 0 ? state.shoppingList.slice(-1)[0].id : 0;
+            const id = state.shoppingList.length > 0 ? state.shoppingList.slice(-1)[0].id : 0;
             return{
                 ...state,
                 shoppingList: [...state.shoppingList, {id: id + 1, name: action.payload}]
@@ -23,6 +23,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 shoppingList: newArray
+            }
+        case 'REMOVE_ALL_ITEMS':
+            return {
+                ...state,
+                shoppingList: []
             }
         default:
             return state;
