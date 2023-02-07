@@ -6,6 +6,7 @@ import { store } from './src/redux/store';
 import { ShowShoppingListScreen } from "./src/pages/ShowShoppingListScreen";
 import { DeleteShoppingListItemScreen } from "./src/pages/DeleteShoppingListItemScreen";
 import { EditShoppingListItemScreen } from "./src/pages/EditShoppingListItemScreen";
+import { ShoppingListScreen } from "./src/pages/ShoppingListScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,7 +26,8 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer theme={MyTheme}>
         <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} options={{ headerTitle: 'Handleliste' }} />
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="ShoppingList" component={ShoppingListScreen} options={{ headerTitle: 'Handleliste' }} />
           <Stack.Screen name="ShowShoppingList" component={ShowShoppingListScreen} options={{ headerTitle: 'Handleliste', headerBackTitle: ' ' }} />
           <Stack.Screen name="DeleteShoppingListItem" component={DeleteShoppingListItemScreen} options={{ headerTitle: 'Slett produkt', headerBackTitle: ' ' }} />
           <Stack.Screen name="EditShoppingListItem" component={EditShoppingListItemScreen} options={{ headerTitle: 'Endre produkt', headerBackTitle: ' ' }} />
